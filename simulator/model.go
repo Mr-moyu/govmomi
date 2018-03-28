@@ -104,9 +104,9 @@ func VPX() *Model {
 		Autostart:      true,
 		Datacenter:     1,
 		Portgroup:      1,
-		Host:           1,
+		Host:           0,
 		Cluster:        1,
-		ClusterHost:    3,
+		ClusterHost:    1,
 		Datastore:      1,
 		Machine:        2,
 	}
@@ -191,7 +191,7 @@ func (m *Model) Create() error {
 
 		host := object.NewHostSystem(client, info.Result.(types.ManagedObjectReference))
 		hosts = append(hosts, host)
-
+                /*
 		if dvs != nil {
 			config := &types.DVSConfigSpec{
 				Host: []types.DistributedVirtualSwitchHostMemberConfigSpec{{
@@ -202,7 +202,7 @@ func (m *Model) Create() error {
 
 			_, _ = dvs.Reconfigure(ctx, config)
 		}
-
+		*/
 		return host, nil
 	}
 
